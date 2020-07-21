@@ -22,7 +22,7 @@ const DevServer = require('../../tools/dev-server');
 const webpackConfig = require('../../tools/webpack/config/dev');
 const packageJson = require('../../package.json');
 const {getAvailablePortSeries} = require('../../tools/utilities');
-
+console.log('config: before');
 const config = new SlateConfig(require('../../slate-tools.schema'));
 console.log('config: loaded');
 const spinner = ora(chalk.magenta(' Compiling...'));
@@ -58,7 +58,7 @@ Promise.all([
     });
 
     previewUrl = `https://${env.getStoreValue()}?preview_theme_id=${env.getThemeIdValue()}`;
-    
+
     assetServer.compiler.hooks.compile.tap('CLI', onCompilerCompile);
     assetServer.compiler.hooks.done.tap('CLI', onCompilerDone);
     assetServer.client.hooks.beforeSync.tapPromise('CLI', onClientBeforeSync);
