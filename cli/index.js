@@ -20,6 +20,7 @@ try {
 let result;
 
 async function init() {
+  console.log('init');
   let slateConfig;
 
   // Convert user config to JSON string so it can be sent in analytics. Make sure

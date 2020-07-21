@@ -1,7 +1,7 @@
 // Set NODE_ENV so slate.config.js can return different values for
 // production vs development builds
 process.env.NODE_ENV = 'development';
-
+console.log('start: started');
 const argv = require('minimist')(process.argv.slice(2));
 const figures = require('figures');
 const chalk = require('chalk');
@@ -10,7 +10,7 @@ const consoleControl = require('console-control-strings');
 const clearConsole = require('react-dev-utils/clearConsole');
 const ip = require('ip');
 const env = require('@shopify/slate-env');
-
+console.log('env: loaded');
 const SlateConfig = require('@shopify/slate-config');
 
 const promptContinueIfPublishedTheme = require('../prompts/continue-if-published-theme');
