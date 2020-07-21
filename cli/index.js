@@ -9,7 +9,7 @@ const packageJson = require('../package.json');
 const script = process.argv[2];
 const args = process.argv.slice(3);
 const config = new SlateConfig(require('../slate-tools.schema'));
-
+console.log('started');
 try {
   slateEnv.assign(argv.env);
 } catch (error) {

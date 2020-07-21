@@ -11,7 +11,6 @@
   "bin": {
     "slate-tools": "./cli/index.js"
   },
-  "engine": ">=8.9.4",
   "dependencies": {
     "@babel/cli": "^7.10.5",
     "@babel/core": "^7.10.5",
