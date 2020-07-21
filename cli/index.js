@@ -2,7 +2,6 @@
 const spawn = require('cross-spawn');
 const chalk = require('chalk');
 const argv = require('minimist')(process.argv.slice(2));
-const analytics = require('@shopify/slate-analytics');
 const SlateConfig = require('@shopify/slate-config');
 const slateEnv = require('@shopify/slate-env');
 const packageJson = require('../package.json');
@@ -22,8 +21,6 @@ let result;
 
 async function init() {
   let slateConfig;
-
-  await analytics.init();
 
   // Convert user config to JSON string so it can be sent in analytics. Make sure
   // we catch any errors while converting, such as converting a circular object
