@@ -6,8 +6,6 @@ const {replace, upload} = require('@shopify/slate-sync');
 const packageJson = require('../../package.json');
 const promptContinueIfPublishedTheme = require('../prompts/continue-if-published-theme');
 
-event('slate-tools:deploy:start', {version: packageJson.version});
-
 const deploy = argv.replace ? replace : upload;
 
 promptContinueIfPublishedTheme()
