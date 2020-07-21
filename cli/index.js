@@ -31,11 +31,6 @@ async function init() {
     slateConfig = JSON.stringify({error: error.message});
   }
 
-  analytics.event('slate-tools:cli:start', {
-    slateConfig,
-    version: packageJson.version,
-  });
-
   switch (script) {
     case 'build':
     case 'deploy':
