@@ -13,6 +13,8 @@
   },
   "engine": ">=8.9.4",
   "dependencies": {
+    "@babel/cli": "^7.10.5",
+    "@babel/core": "^7.10.5",
     "@shopify/html-webpack-liquid-asset-tags-plugin": "1.0.0-beta.11",
     "@shopify/slate-analytics": "1.0.0-beta.16",
     "@shopify/slate-config": "1.0.0-beta.14",
@@ -28,7 +30,6 @@
     "archiver": "^4.0.2",
     "array-flatten": "^3.0.0",
     "autoprefixer": "9.8.5",
-    "babel-cli": "6.26.0",
     "babel-jest": "26.1.0",
     "babel-loader": "8.1.0",
     "browser-sync": "^2.24.6",
