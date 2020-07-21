@@ -4,6 +4,7 @@ const {getSSLKeyPath, getSSLCertPath} = require('../utilities');
 
 class DevServer {
   constructor(options) {
+    console.log('DevServer')
     this.bs = browserSync.create();
     this.target = `https://${getStoreValue()}`;
     this.themeId = getThemeIdValue();
