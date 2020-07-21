@@ -5,7 +5,7 @@ class HtmlWebpackIncludeLiquidStylesPlugin {
   }
 
   apply(compiler) {
-    compiler.hooks.shouldEmit.tap('htmlWebpackIncludeChunksPlugin', (compilation) => {
+    compiler.hooks.compilation.tap('htmlWebpackIncludeChunksPlugin', (compilation) => {
       this.onCompilation.bind(this)
     });
   }
