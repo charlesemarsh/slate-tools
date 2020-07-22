@@ -40,7 +40,7 @@ const cssVarLoader = {loader: '@shopify/slate-cssvar-loader'};
 
 const sassLoader = {
   loader: 'sass-loader',
-  options: {sourceMap: config.get('webpack.sourceMap.styles')},
+  options: {webpackImporter: false, sourceMap: config.get('webpack.sourceMap.styles')},
 };
 
 sassRule.use = [
