@@ -33,7 +33,9 @@ module.exports = merge([
     mode: 'development',
 
     devtool: 'eval-source-map',
-
+    devServer: {
+      hot: true,
+    },
     plugins: [
       new webpack.HotModuleReplacementPlugin(),
 
