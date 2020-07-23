@@ -9,7 +9,7 @@ const injectLocalesIntoSettingsSchema = require('../utilities/inject-locales-int
 
 const extractLiquidStyles = new MiniCssExtractPlugin({
   filename: '[name].styleLiquid.scss.liquid',
-  chunkFilename: '[id].css',
+  chunkFilename: '[name].styleLiquid.scss.liquid',
 });
 
 module.exports = {
