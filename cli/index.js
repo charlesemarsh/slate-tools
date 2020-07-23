@@ -9,7 +9,7 @@ const packageJson = require('../package.json');
 const script = process.argv[2];
 const args = process.argv.slice(3);
 const config = new SlateConfig(require('../slate-tools.schema'));
-console.log('started');
+console.log('Please wait...');
 try {
   slateEnv.assign(argv.env);
 } catch (error) {
@@ -20,7 +20,6 @@ try {
 let result;
 
 async function init() {
-  console.log('init');
   let slateConfig;
 
   // Convert user config to JSON string so it can be sent in analytics. Make sure
