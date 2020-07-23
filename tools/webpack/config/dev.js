@@ -53,24 +53,6 @@ module.exports = merge([
         liquidLayouts: getLayoutEntrypoints(),
       }),
 
-      new HtmlWebpackPlugin({
-        excludeChunks: ['static'],
-        filename: `../snippets/style-tags.liquid`,
-        template: path.resolve(__dirname, '../style-tags.html'),
-        inject: false,
-        minify: {
-          removeComments: true,
-          removeAttributeQuotes: false,
-          // more options:
-          // https://github.com/kangax/html-minifier#options-quick-reference
-        },
-        // necessary to consistently work with multiple chunks via CommonsChunkPlugin
-        chunksSortMode: 'auto',
-        isDevServer: true,
-        liquidTemplates: getTemplateEntrypoints(),
-        liquidLayouts: getLayoutEntrypoints(),
-      }),
-
       new HtmlWebpackIncludeLiquidStylesPlugin(),
     ],
   },
