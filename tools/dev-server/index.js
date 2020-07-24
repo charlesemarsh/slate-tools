@@ -4,7 +4,7 @@ const {getSSLKeyPath, getSSLCertPath} = require('../utilities');
 
 class DevServer {
   constructor(options) {
-    console.log('DevServer')
+    console.log(options)
     this.bs = browserSync.create();
     this.target = `https://${getStoreValue()}`;
     this.themeId = getThemeIdValue();
@@ -14,8 +14,10 @@ class DevServer {
     this.proxyTarget =
       this.target +
       (this.themeId === 'live' ? '' : `?preview_theme_id=${this.themeId}`);
+    console.log(this.proxyTarget)
   }
   start() {
+    console.log('DevServer : start')
     const bsConfig = {
       port: this.port,
       proxy: {
