@@ -16,6 +16,7 @@ module.exports = class Client {
   }
 
   async sync(files, stats) {
+    console.log('sync...');
     this.files = files;
 
     await this.hooks.beforeSync.promise(this.files, stats);
