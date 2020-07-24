@@ -1,7 +1,6 @@
 // Set NODE_ENV so slate.config.js can return different values for
 // production vs development builds
 process.env.NODE_ENV = 'development';
-console.log('start: started');
 const argv = require('minimist')(process.argv.slice(2));
 const figures = require('figures');
 const chalk = require('chalk');
@@ -10,7 +9,6 @@ const consoleControl = require('console-control-strings');
 const clearConsole = require('react-dev-utils/clearConsole');
 const ip = require('ip');
 const env = require('@shopify/slate-env');
-console.log('env: loaded');
 const SlateConfig = require('@shopify/slate-config');
 
 const promptContinueIfPublishedTheme = require('../prompts/continue-if-published-theme');
@@ -22,10 +20,8 @@ const DevServer = require('../../tools/dev-server');
 const webpackConfig = require('../../tools/webpack/config/dev');
 const packageJson = require('../../package.json');
 const {getAvailablePortSeries} = require('../../tools/utilities');
-console.log('config: before');
 const config = new SlateConfig(require('../../slate-tools.schema'));
-console.log('config: loaded');
-const spinner = ora(chalk.magenta(' Compiling...'));
+const spinner = ora(chalk.magenta('Compiling...'));
 
 let firstSync = true;
 let skipSettingsData = null;
@@ -58,7 +54,7 @@ Promise.all([
     });
 
     previewUrl = `https://${env.getStoreValue()}?preview_theme_id=${env.getThemeIdValue()}`;
-
+    
     assetServer.compiler.hooks.compile.tap('CLI', onCompilerCompile);
     assetServer.compiler.hooks.done.tap('CLI', onCompilerDone);
     assetServer.client.hooks.beforeSync.tapPromise('CLI', onClientBeforeSync);
@@ -121,6 +117,7 @@ function onCompilerDone(stats) {
 }
 
 async function onClientBeforeSync(files) {
+  console.log(chalk.blue('Syncing'));
   if (firstSync && argv.skipFirstDeploy) {
     assetServer.skipDeploy = true;
 
