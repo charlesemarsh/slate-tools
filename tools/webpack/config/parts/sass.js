@@ -12,11 +12,14 @@ const part = {
 };
 
 const sassRule = {
-  test: /\.scss$/,
+  test: /\.s[ac]ss$/,
 };
 
 const styleLoader = {
-  loader: 'style-loader'
+  loader: 'style-loader',
+  options: {
+    hmr: isDev,
+  },
 };
 
 const cssLoader = {
@@ -40,7 +43,7 @@ const cssVarLoader = {loader: '@shopify/slate-cssvar-loader'};
 
 const sassLoader = {
   loader: 'sass-loader',
-  options: {webpackImporter: false, sourceMap: config.get('webpack.sourceMap.styles')},
+  options: {sourceMap: config.get('webpack.sourceMap.styles')},
 };
 
 sassRule.use = [

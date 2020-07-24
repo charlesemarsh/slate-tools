@@ -10,17 +10,14 @@ module.exports = class App {
     const app = express();
 
     app.webpackDevMiddleware = webpackDevMiddleware(compiler, {
-      quiet: false,
-      watchOptions: {
-        poll: true
-      },
+      logLevel: 'silent',
+      reload: true,
       writeToDisk: (filePath) => {
         return !isHotUpdateFile(filePath);
       },
     });
     app.webpackHotMiddleware = webpackHotMiddleware(compiler, {
-      log: true,
-      noInfo: false
+      log: false,
     });
 
     app.use(corsMiddleware());

@@ -8,11 +8,20 @@ process.env.NODE_ENV = 'production';
  * If the `deploy` argument has been passed, deploy to Shopify when the compilation is done.
  */
 const webpack = require('webpack');
+const {event} = require('@shopify/slate-analytics');
 const webpackConfig = require('../../tools/webpack/config/prod');
 const packageJson = require('../../package.json');
 
+event('slate-tools:build:start', {
+  version: packageJson.version,
+});
+
 webpack(webpackConfig, (err, stats) => {
   if (err) throw err;
+
+  event('slate-tools:build:end', {
+    version: packageJson.version,
+  });
 
   process.stdout.write(
     `${stats.toString({
@@ -24,7 +33,7 @@ webpack(webpackConfig, (err, stats) => {
     })}`,
   );
 
-  console.log('test');
+  console.log('');
 
   if (stats.compilation.errors.length) process.exit(1);
 });

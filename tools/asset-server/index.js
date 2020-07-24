@@ -1,5 +1,4 @@
 const webpack = require('webpack');
-console.log('webpack: loaded');
 const {createServer} = require('https');
 const createHash = require('crypto').createHash;
 const SlateConfig = require('@shopify/slate-config');
