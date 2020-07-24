@@ -51,7 +51,7 @@
     "file-loader": "6.0.0",
     "fs-extra": "9.0.1",
     "html-loader": "^1.1.0",
-    "html-webpack-plugin": "git+https://github.com/jantimon/html-webpack-plugin.git#feature/webpack-5-merge",
+    "html-webpack-plugin": "^4.0.0-beta.14",
     "html-webpack-tags-plugin": "^2.0.17",
     "img-loader": "3.0.1",
     "inquirer": "^7.3.2",
