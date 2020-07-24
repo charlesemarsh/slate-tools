@@ -54,7 +54,7 @@ module.exports = merge([
           removeComments: true,
           collapseWhitespace: true,
           removeAttributeQuotes: false,
-          preserveLineBreaks: true,
+          preserveLineBreaks: false,
           // more options:
           // https://github.com/kangax/html-minifier#options-quick-reference
         },
@@ -72,7 +72,7 @@ module.exports = merge([
           removeComments: true,
           collapseWhitespace: true,
           removeAttributeQuotes: false,
-          preserveLineBreaks: true,
+          preserveLineBreaks: false,
           // more options:
           // https://github.com/kangax/html-minifier#options-quick-reference
         },
