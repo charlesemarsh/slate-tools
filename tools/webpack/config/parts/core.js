@@ -77,37 +77,39 @@ module.exports = {
 
     extractLiquidStyles,
 
-    new CopyWebpackPlugin([
-      {
-        from: config.get('paths.theme.src.assets'),
-        to: config.get('paths.theme.dist.assets'),
-        flatten: true,
-      },
-      {
-        from: config.get('paths.theme.src.config'),
-        to: config.get('paths.theme.dist.config'),
-        ignore: ['locales/*.json'],
-        transform(content, filePath) {
-          return injectLocalesIntoSettingsSchema(content, filePath);
+    new CopyWebpackPlugin({
+      patterns: [
+        {
+          from: config.get('paths.theme.src.assets'),
+          to: config.get('paths.theme.dist.assets'),
+          flatten: true,
         },
-      },
-      {
-        from: config.get('paths.theme.src.layout'),
-        to: config.get('paths.theme.dist.layout'),
-      },
-      {
-        from: config.get('paths.theme.src.locales'),
-        to: config.get('paths.theme.dist.locales'),
-      },
-      {
-        from: config.get('paths.theme.src.snippets'),
-        to: config.get('paths.theme.dist.snippets'),
-      },
-      {
-        from: config.get('paths.theme.src.templates'),
-        to: config.get('paths.theme.dist.templates'),
-      },
-    ]),
+        {
+          from: config.get('paths.theme.src.config'),
+          to: config.get('paths.theme.dist.config'),
+          ignore: ['locales/*.json'],
+          transform(content, filePath) {
+            return injectLocalesIntoSettingsSchema(content, filePath);
+          },
+        },
+        {
+          from: config.get('paths.theme.src.layout'),
+          to: config.get('paths.theme.dist.layout'),
+        },
+        {
+          from: config.get('paths.theme.src.locales'),
+          to: config.get('paths.theme.dist.locales'),
+        },
+        {
+          from: config.get('paths.theme.src.snippets'),
+          to: config.get('paths.theme.dist.snippets'),
+        },
+        {
+          from: config.get('paths.theme.src.templates'),
+          to: config.get('paths.theme.dist.templates'),
+        }
+      ]
+    }),
 
     new SlateSectionsPlugin({
       from: config.get('paths.theme.src.sections'),
