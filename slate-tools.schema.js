@@ -57,17 +57,6 @@ module.exports = {
   // on SSL
   'ssl.key': path.resolve(os.homedir(), '.localhost_ssl/server.key'),
 
-  // Path to Eslint bin executable
-  'stylelint.bin': path.resolve(__dirname, 'node_modules/.bin/stylelint'),
-
-  // Path to .stylelintrc file
-  'stylelint.config': (config) =>
-    path.resolve(config.get('paths.theme'), '.stylelintrc'),
-
-  // Path to .stylelintignore file
-  'stylelint.ignorePath': (config) =>
-    path.resolve(config.get('paths.theme'), '.stylelintignore'),
-
   // Path to Themelint bin executable
   'themelint.bin': path.resolve(__dirname, 'node_modules/.bin/theme-lint'),
 

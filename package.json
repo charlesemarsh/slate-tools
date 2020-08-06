@@ -71,8 +71,6 @@
     "react-dev-utils": "0.5.2",
     "sass-loader": "6.0.7",
     "style-loader": "0.20.3",
-    "stylelint": "^9.1.2",
-    "stylelint-webpack-plugin": "^0.10.1",
     "tapable": "^1.0.0",
     "uglifyjs-webpack-plugin": "^1.0.1",
     "uuid": "^3.2.1",
