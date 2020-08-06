@@ -87,9 +87,11 @@ module.exports = {
         {
           from: config.get('paths.theme.src.config'),
           to: config.get('paths.theme.dist.config'),
-          ignore: ['locales/*.json'],
-          transform(content, filePath) {
-            return injectLocalesIntoSettingsSchema(content, filePath);
+          globOptions: {
+            ignore: ['locales/*.json'],
+            transform(content, filePath) {
+              return injectLocalesIntoSettingsSchema(content, filePath);
+            },
           },
         },
         {
