@@ -1,6 +1,6 @@
 const path = require('path');
 const webpack = require('webpack');
-const {merge} = require('webpack-merge');
+const merge = require('webpack-merge');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 const SlateConfig = require('@shopify/slate-config');
@@ -63,7 +63,7 @@ module.exports = merge([
           // https://github.com/kangax/html-minifier#options-quick-reference
         },
         // necessary to consistently work with multiple chunks via CommonsChunkPlugin
-        //chunksSortMode: 'dependency',
+        chunksSortMode: 'dependency',
         isDevServer: true,
         liquidTemplates: getTemplateEntrypoints(),
         liquidLayouts: getLayoutEntrypoints(),
