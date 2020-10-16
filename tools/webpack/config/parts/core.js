@@ -88,7 +88,6 @@ module.exports = {
         {
           from: config.get('paths.theme.src.config'),
           to: config.get('paths.theme.dist.config'),
-          ignore: ['locales/*.json'],
           transform(content, filePath) {
             return injectLocalesIntoSettingsSchema(content, filePath);
           },
@@ -111,7 +110,7 @@ module.exports = {
         }
       ],
     }),
-    
+
     new SlateSectionsPlugin({
       from: config.get('paths.theme.src.sections'),
       to: config.get('paths.theme.dist.sections'),
