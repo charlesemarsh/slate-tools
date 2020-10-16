@@ -1,7 +1,7 @@
 const path = require('path');
-const CleanWebpackPlugin = require('clean-webpack-plugin');
-const CopyWebpackPlugin = require('copy-webpack-plugin');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const { ExtractTextPlugin } = require('extract-text-webpack-plugin');
 const SlateConfig = require('@shopify/slate-config');
 const SlateSectionsPlugin = require('@shopify/slate-sections-plugin');
 const config = new SlateConfig(require('../../../../slate-tools.schema'));
@@ -105,14 +105,6 @@ module.exports = {
         from: config.get('paths.theme.src.templates'),
         to: config.get('paths.theme.dist.templates'),
       },
-      {
-        from: config.get('paths.theme.src.frame'),
-        to: config.get('paths.theme.dist.frame'),
-      },
-      {
-        from: config.get('paths.theme.src.content'),
-        to: config.get('paths.theme.dist.content'),
-      }
     ]),
 
     new SlateSectionsPlugin({
