@@ -5,7 +5,7 @@ class HtmlWebpackIncludeLiquidStylesPlugin {
   }
 
   apply(compiler) {
-    compilation.plugin('html-webpack-include-sibling-chunks-plugin', function (chunks, init) {
+    compiler.hooks.compilation.tap('myPlugin', compilation => {
       this.onCompilation.bind(this)
     });
   }
