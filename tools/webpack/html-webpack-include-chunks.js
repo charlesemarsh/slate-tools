@@ -5,23 +5,20 @@ class HtmlWebpackIncludeLiquidStylesPlugin {
   }
 
   apply(compiler) {
-    compiler.hooks.compilation.tap(
-      'htmlWebpackIncludeChunksPlugin',
-      this.onCompilation.bind(this),
-    );
+    compiler.hooks.compilation.tap('htmlWebpackIncludeChunksPlugin', (params) => {
+      this.onCompilation.bind(this)
+    });
   }
 
   onCompilation(compilation) {
     this.compilation = compilation;
 
-    compilation.hooks.htmlWebpackPluginAlterChunks.tap(
-      'htmlWebpackIncludeChunksPlugin',
-      this.onAlterChunks.bind(this),
+    compilation.hooks.htmlWebpackPluginAlterChunks.tap('htmlWebpackIncludeChunksPlugin', (params) => {
+      this.onAlterChunks.bind(this)
     );
 
-    compilation.hooks.htmlWebpackPluginBeforeHtmlGeneration.tap(
-      'htmlWebpackIncludeChunksPlugin',
-      this.onBeforeHtmlGeneration.bind(this),
+    compilation.hooks.htmlWebpackPluginBeforeHtmlGeneration.tap('htmlWebpackIncludeChunksPlugin', (params) => {
+      this.onBeforeHtmlGeneration.bind(this)
     );
   }
 
