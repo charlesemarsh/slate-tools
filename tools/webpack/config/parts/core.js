@@ -1,13 +1,13 @@
 const path = require('path');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const SlateConfig = require('@shopify/slate-config');
 const SlateSectionsPlugin = require('@shopify/slate-sections-plugin');
 const config = new SlateConfig(require('../../../../slate-tools.schema'));
 const injectLocalesIntoSettingsSchema = require('../utilities/inject-locales-into-settings-schema');
 
-const extractLiquidStyles = new ExtractTextPlugin(
+const extractLiquidStyles = new MiniCssExtractPlugin(
   '[name].styleLiquid.scss.liquid',
 );
 
