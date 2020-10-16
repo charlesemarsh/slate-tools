@@ -7,9 +7,9 @@ const SlateSectionsPlugin = require('@shopify/slate-sections-plugin');
 const config = new SlateConfig(require('../../../../slate-tools.schema'));
 const injectLocalesIntoSettingsSchema = require('../utilities/inject-locales-into-settings-schema');
 
-const extractLiquidStyles = new MiniCssExtractPlugin(
-  '[name].styleLiquid.scss.liquid',
-);
+const extractLiquidStyles = new MiniCssExtractPlugin({
+  filename: '[name].styleLiquid.scss.liquid'
+});
 
 module.exports = {
   context: config.get('paths.theme.src'),
