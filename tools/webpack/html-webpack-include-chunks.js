@@ -14,7 +14,7 @@ class HtmlWebpackIncludeLiquidStylesPlugin {
     this.compilation = compilation;
     compilation.plugin('html-webpack-plugin-alter-chunks', function (chunks, init) {
       this.onAlterChunks.bind(this)
-    };
+    });
 
     compilation.plugin('html-webpack-plugin-before-html-generation', function (chunks, init) {
       this.onBeforeHtmlGeneration.bind(this)
