@@ -15,7 +15,7 @@
   "dependencies": {
     "@shopify/html-webpack-liquid-asset-tags-plugin": "1.0.0-beta.11",
     "@shopify/slate-analytics": "1.0.0-beta.16",
-    "@shopify/slate-config": "1.0.0-beta.14",
+    "@shopify/slate-config": "https://github.com/charlesemarsh/slate-env.githttps://github.com/charlesemarsh/slate-config.git#a128c460431ca8ec7f6a628b1e41419a8ce29964",
     "@shopify/slate-cssvar-loader": "1.0.0-beta.16",
     "@shopify/slate-env": "1.0.0-beta.16",
     "@shopify/slate-liquid-asset-loader": "1.0.0-beta.11",
