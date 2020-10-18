@@ -1,6 +1,6 @@
 const path = require('path');
 const webpack = require('webpack');
-const { merge } = require('webpack-merge');
+const merge = require('webpack-merge');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
@@ -32,7 +32,7 @@ module.exports = merge([
 
     plugins: [
       new MiniCssExtractPlugin({
-        filename: '[name].css',
+        filename: '[name].css.liquid',
       }),
 
       new webpack.DefinePlugin({
@@ -54,7 +54,7 @@ module.exports = merge([
           removeComments: true,
           collapseWhitespace: true,
           removeAttributeQuotes: false,
-          preserveLineBreaks: false,
+          preserveLineBreaks: true,
           // more options:
           // https://github.com/kangax/html-minifier#options-quick-reference
         },
@@ -72,7 +72,7 @@ module.exports = merge([
           removeComments: true,
           collapseWhitespace: true,
           removeAttributeQuotes: false,
-          preserveLineBreaks: false,
+          preserveLineBreaks: true,
           // more options:
           // https://github.com/kangax/html-minifier#options-quick-reference
         },

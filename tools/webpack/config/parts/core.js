@@ -1,22 +1,23 @@
 const path = require('path');
-const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const CleanWebpackPlugin = require('clean-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const SlateConfig = require('@shopify/slate-config');
 const SlateSectionsPlugin = require('@shopify/slate-sections-plugin');
 const config = new SlateConfig(require('../../../../slate-tools.schema'));
 const injectLocalesIntoSettingsSchema = require('../utilities/inject-locales-into-settings-schema');
 
-const extractLiquidStyles = new MiniCssExtractPlugin({
-  filename: '[name].styleLiquid.scss.liquid'
-});
+const extractLiquidStyles = new ExtractTextPlugin(
+  '[name].styleLiquid.scss.liquid',
+);
 
 module.exports = {
   context: config.get('paths.theme.src'),
 
   output: {
     filename: '[name].js',
-    path: config.get('paths.theme.dist.assets')
+    path: config.get('paths.theme.dist.assets'),
+    jsonpFunction: 'shopifySlateJsonp',
   },
 
   resolveLoader: {
@@ -62,56 +63,49 @@ module.exports = {
       {
         test: /(css|scss|sass)\.liquid$/,
         exclude: config.get('webpack.commonExcludes'),
-        use: [
-          MiniCssExtractPlugin.loader,
-          { loader: 'concat-style-loader' }
-        ]
+        use: extractLiquidStyles.extract(['concat-style-loader']),
       },
     ],
   },
 
   plugins: [
-    new CleanWebpackPlugin({
-      cleanOnceBeforeBuildPatterns: ['dist'],
+    new CleanWebpackPlugin(['dist'], {
       root: config.get('paths.theme'),
-      verbose: true,
-      dry: false,
     }),
 
     extractLiquidStyles,
 
-    new CopyWebpackPlugin({
-      patterns: [
-        {
-          from: config.get('paths.theme.src.assets'),
-          to: config.get('paths.theme.dist.assets'),
-          flatten: true,
+    new CopyWebpackPlugin([
+      {
+        from: config.get('paths.theme.src.assets'),
+        to: config.get('paths.theme.dist.assets'),
+        flatten: true,
+      },
+      {
+        from: config.get('paths.theme.src.config'),
+        to: config.get('paths.theme.dist.config'),
+        ignore: ['locales/*.json'],
+        transform(content, filePath) {
+          return injectLocalesIntoSettingsSchema(content, filePath);
         },
-        {
-          from: config.get('paths.theme.src.config'),
-          to: config.get('paths.theme.dist.config'),
-          transform(content, filePath) {
-            return injectLocalesIntoSettingsSchema(content, filePath);
-          },
-        },
-        {
-          from: config.get('paths.theme.src.layout'),
-          to: config.get('paths.theme.dist.layout'),
-        },
-        {
-          from: config.get('paths.theme.src.locales'),
-          to: config.get('paths.theme.dist.locales'),
-        },
-        {
-          from: config.get('paths.theme.src.snippets'),
-          to: config.get('paths.theme.dist.snippets'),
-        },
-        {
-          from: config.get('paths.theme.src.templates'),
-          to: config.get('paths.theme.dist.templates'),
-        }
-      ],
-    }),
+      },
+      {
+        from: config.get('paths.theme.src.layout'),
+        to: config.get('paths.theme.dist.layout'),
+      },
+      {
+        from: config.get('paths.theme.src.locales'),
+        to: config.get('paths.theme.dist.locales'),
+      },
+      {
+        from: config.get('paths.theme.src.snippets'),
+        to: config.get('paths.theme.dist.snippets'),
+      },
+      {
+        from: config.get('paths.theme.src.templates'),
+        to: config.get('paths.theme.dist.templates'),
+      },
+    ]),
 
     new SlateSectionsPlugin({
       from: config.get('paths.theme.src.sections'),
