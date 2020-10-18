@@ -99,9 +99,9 @@ function onCompilerDone(stats) {
     });
 
     console.log(chalk.red('Failed to compile.\n'));
-
+    
     statsJson.errors.forEach((message) => {
-      console.log(message.stack);
+      console.log(message);
     });
   }
 
