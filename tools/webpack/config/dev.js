@@ -31,14 +31,9 @@ module.exports = merge([
   css,
   {
     mode: 'development',
-    entry: {
-      main: path.resolve(__dirname, './cli/asset-server/index.js'),
-    },
-    devtool: 'eval-source-map',
-    devServer: {
-      contentBase: './dist',
-      hot: true,
-    },
+
+    devtool: '#eval-source-map',
+
     plugins: [
       new webpack.HotModuleReplacementPlugin(),
 
