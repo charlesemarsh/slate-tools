@@ -5,6 +5,7 @@
   "repository": "https://github.com/Shopify/slate/tree/1.x/packages/slate-tools",
   "license": "MIT",
   "author": "Shopify",
+  "main": "./cli/index.js",
   "bugs": {
     "url": "https://github.com/Shopify/slate/issues"
   },
@@ -28,7 +29,7 @@
     "@shopify/themekit": "1.1.6",
     "archiver": "^5.0.2",
     "array-flatten": "^3.0.0",
-    "autoprefixer": "10.0.1",
+    "autoprefixer": "^9.0.0",
     "babel-jest": "26.5.2",
     "babel-loader": "8.1.0",
     "browser-sync": "^2.26.13",
@@ -84,7 +85,8 @@
     "yargs": "^16.1.0"
   },
   "devDependencies": {
-    "mock-fs": "^4.6.0"
+    "mock-fs": "^4.6.0",
+    "webpack-cli": "^4.0.0"
   },
   "publishConfig": {
     "access": "public",

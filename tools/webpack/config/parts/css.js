@@ -17,9 +17,6 @@ const cssRule = {
 
 const styleLoader = {
   loader: 'style-loader',
-  options: {
-    hmr: isDev,
-  },
 };
 
 const cssLoader = {
@@ -34,9 +31,11 @@ const cssLoader = {
 const postcssLoader = {
   loader: 'postcss-loader',
   options: {
-    ident: 'postcss',
-    sourceMap: !isDev,
-    plugins: config.get('webpack.postcss.plugins'),
+    postcssOptions: {
+      ident: 'postcss',
+      sourceMap: !isDev,
+      plugins: config.get('webpack.postcss.plugins'),
+    }
   },
 };
 

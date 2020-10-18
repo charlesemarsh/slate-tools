@@ -89,7 +89,7 @@ function onCompilerDone(stats) {
   spinner.stop();
 
   if (process.env.NODE_ENV !== 'test') {
-    clearConsole();
+    //clearConsole();
   }
 
   if (statsJson.errors.length) {
@@ -101,8 +101,7 @@ function onCompilerDone(stats) {
     console.log(chalk.red('Failed to compile.\n'));
 
     statsJson.errors.forEach((message) => {
-      console.log('ddd')
-      console.log(`${message}\n`);
+      console.log(message.stack);
     });
   }
 
