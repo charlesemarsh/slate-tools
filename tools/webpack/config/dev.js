@@ -39,7 +39,7 @@ module.exports = merge([
 
       new HtmlWebpackPlugin({
         excludeChunks: ['static'],
-        filename: `/dist/snippets/script-tags.liquid`,
+        filename: `../snippets/script-tags.liquid`,
         template: path.resolve(__dirname, '../script-tags.html'),
         inject: false,
         minify: {
@@ -54,7 +54,7 @@ module.exports = merge([
 
       new HtmlWebpackPlugin({
         excludeChunks: ['static'],
-        filename: `/dist/snippets/style-tags.liquid`,
+        filename: `../snippets/style-tags.liquid`,
         template: path.resolve(__dirname, '../style-tags.html'),
         inject: false,
         minify: {
