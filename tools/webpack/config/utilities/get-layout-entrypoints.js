@@ -8,6 +8,7 @@ module.exports = function() {
 
   fs.readdirSync(config.get('paths.theme.src.layout')).forEach((file) => {
     const name = path.parse(file).name;
+    console.log(name)
     const jsFile = path.join(
       config.get('paths.theme.src.scripts'),
       'layout',
