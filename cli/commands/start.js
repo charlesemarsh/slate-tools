@@ -60,7 +60,7 @@ Promise.all([
     });
 
     previewUrl = `https://${env.getStoreValue()}?preview_theme_id=${env.getThemeIdValue()}`;
-
+    
     assetServer.compiler.hooks.compile.tap('CLI', onCompilerCompile);
     assetServer.compiler.hooks.done.tap('CLI', onCompilerDone);
     assetServer.client.hooks.beforeSync.tapPromise('CLI', onClientBeforeSync);

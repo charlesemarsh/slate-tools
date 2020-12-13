@@ -37,7 +37,9 @@ module.exports = merge([
 
       new HtmlWebpackPlugin({
         excludeChunks: ['static'],
-        filename: `../snippets/script-tags.liquid`,
+        output: {
+          filename: `../snippets/script-tags.liquid`,
+        },
         template: path.resolve(__dirname, '../script-tags.html'),
         inject: false,
         minify: {
