@@ -38,12 +38,12 @@ module.exports = {
       },
       {
         test: /fonts\/.*\.(eot|svg|ttf|woff|woff2|otf)$/,
-        exclude: /node_modules/,
+        exclude: [/node_modules/],
         loader: 'file-loader',
       },
       {
         test: /\.(png|svg|jpg|gif)$/,
-        exclude: config.get('webpack.commonExcludes'),
+        exclude: [config.get('webpack.commonExcludes')],
         use: [
           {loader: 'file-loader', options: {name: '[name].[ext]'}},
           {loader: 'img-loader'},
@@ -62,7 +62,7 @@ module.exports = {
       },
       {
         test: /(css|scss|sass)\.liquid$/,
-        exclude: config.get('webpack.commonExcludes'),
+        exclude: [config.get('webpack.commonExcludes')],
         use: [extractLiquidStyles.loader,'concat-style-loader']
       },
     ],
