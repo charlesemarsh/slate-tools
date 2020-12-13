@@ -32,7 +32,6 @@ module.exports = {
   module: {
     rules: [
       {
-        enforce: "pre",
         test: /\.js$/,
         exclude: config.get('webpack.commonExcludes'),
         loader: 'hmr-alamo-loader',
@@ -63,6 +62,7 @@ module.exports = {
       },
       {
         test: /(css|scss|sass)\.liquid$/,
+        inject: true,
         exclude: [config.get('webpack.commonExcludes')],
         use: [extractLiquidStyles.loader,'concat-style-loader']
       },
