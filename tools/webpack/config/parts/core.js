@@ -38,13 +38,11 @@ module.exports = {
         loader: 'hmr-alamo-loader',
       },
       {
-        enforce: "pre",
         test: /fonts\/.*\.(eot|svg|ttf|woff|woff2|otf)$/,
         exclude: [/node_modules/],
         loader: 'file-loader',
       },
       {
-        enforce: "pre",
         test: /\.(png|svg|jpg|gif)$/,
         exclude: [config.get('webpack.commonExcludes')],
         use: [
@@ -53,7 +51,6 @@ module.exports = {
         ],
       },
       {
-        enforce: "pre",
         test: /\.(liquid|json)$/,
         exclude: [
           /(css|scss|sass)\.liquid$/,
@@ -65,7 +62,6 @@ module.exports = {
         },
       },
       {
-        enforce: "pre",
         test: /(css|scss|sass)\.liquid$/,
         exclude: [config.get('webpack.commonExcludes')],
         use: [extractLiquidStyles.loader,'concat-style-loader']
