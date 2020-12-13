@@ -64,7 +64,7 @@ module.exports = {
         sideEffects: true,
         test: /(css|scss|sass)\.liquid$/,
         exclude: [config.get('webpack.commonExcludes')],
-        use: [MiniCssExtractPlugin.loader,'concat-style-loader']
+        use: [extractLiquidStyles.loader,'concat-style-loader']
       },
     ],
   },
@@ -74,7 +74,9 @@ module.exports = {
       root: config.get('paths.theme'),
     }),
 
-    extractLiquidStyles,
+    new MiniCssExtractPlugin({
+      filename: '[name].styleLiquid.scss.liquid',
+    }),
 
     new CopyWebpackPlugin([
       {
