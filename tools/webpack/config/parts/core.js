@@ -64,7 +64,7 @@ module.exports = {
         sideEffects: true,
         test: /(css|scss|sass)\.liquid$/,
         exclude: [config.get('webpack.commonExcludes')],
-        use: [extractLiquidStyles.loader,'concat-style-loader']
+        use: [{ loader: MiniCssExtractPlugin.loader, {} },'concat-style-loader']
       },
     ],
   },
