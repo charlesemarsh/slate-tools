@@ -2,23 +2,9 @@ class HtmlWebpackIncludeLiquidStylesPlugin {
   constructor(options) {
     this.options = options;
     this.files = [];
-    this.chunks = [];
   }
 
   apply(compiler) {
-    compiler.hooks.emit.tap("ChunksFromEntryPlugin", compilation => {
-      const stats = compilation.getStats().toJson();
-
-      compilation.hooks.htmlWebpackPluginAlterChunks.tap(
-        "htmlWebpackIncludeChunksPlugin",
-        (_, { plugin }) => {
-          // takes entry name passed via HTMLWebpackPlugin's options
-          const entry = plugin.options.entry;
-
-          this.chunks = stats.entrypoints[entry].chunks
-        }
-      );
-    });
     compiler.hooks.compilation.tap(
       'htmlWebpackIncludeChunksPlugin',
       this.onCompilation.bind(this),
@@ -40,7 +26,7 @@ class HtmlWebpackIncludeLiquidStylesPlugin {
   }
 
   onAlterChunks(chunks) {
-    
+    this.chunks = chunks;
   }
 
   onBeforeHtmlGeneration(htmlPluginData) {
