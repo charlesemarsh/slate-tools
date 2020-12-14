@@ -10,6 +10,7 @@ const babel = require('./parts/babel');
 const entry = require('./parts/entry');
 const sass = require('./parts/sass');
 const css = require('./parts/css');
+const srcPath = path.join(__dirname, 'src');
 
 const getLayoutEntrypoints = require('./utilities/get-layout-entrypoints');
 const getTemplateEntrypoints = require('./utilities/get-template-entrypoints');
@@ -37,11 +38,13 @@ module.exports = merge([
 
       new HtmlWebpackPlugin({
         excludeChunks: ['static'],
+        context: srcPath,
         output: {
+          path: path.join(__dirname, "../dist"),
           filename: `../snippets/script-tags.liquid`,
         },
         template: path.resolve(__dirname, '../script-tags.html'),
-        inject: false,
+        inject: true,
         minify: {
           removeComments: true,
           removeAttributeQuotes: false,
@@ -56,7 +59,7 @@ module.exports = merge([
         excludeChunks: ['static'],
         filename: `../snippets/style-tags.liquid`,
         template: path.resolve(__dirname, '../style-tags.html'),
-        inject: false,
+        inject: true,
         minify: {
           removeComments: true,
           removeAttributeQuotes: false,
