@@ -44,7 +44,7 @@ module.exports = merge([
           filename: `../snippets/script-tags.liquid`,
         },
         template: path.resolve(__dirname, '../script-tags.html'),
-        inject: true,
+        inject: false,
         minify: {
           removeComments: true,
           removeAttributeQuotes: false,
@@ -59,7 +59,7 @@ module.exports = merge([
         excludeChunks: ['static'],
         filename: `../snippets/style-tags.liquid`,
         template: path.resolve(__dirname, '../style-tags.html'),
-        inject: true,
+        inject: false,
         minify: {
           removeComments: true,
           removeAttributeQuotes: false,
