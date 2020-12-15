@@ -17,7 +17,7 @@ module.exports = {
   output: {
     filename: '[name].js',
     path: config.get('paths.theme.dist.assets'),
-    chunkLoadingGlobal: 'shopifySlateJsonp'
+    jsonpFunction: 'shopifySlateJsonp',
   },
 
   resolveLoader: {
