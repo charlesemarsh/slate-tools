@@ -50,6 +50,7 @@ module.exports = merge([
         filename: `../snippets/script-tags.liquid`,
         template: path.resolve(__dirname, '../script-tags.html'),
         inject: false,
+        isDevServer: false,
         minify: {
           removeComments: true,
           collapseWhitespace: true,
@@ -68,6 +69,7 @@ module.exports = merge([
         filename: `../snippets/style-tags.liquid`,
         template: path.resolve(__dirname, '../style-tags.html'),
         inject: false,
+        isDevServer: false,
         minify: {
           removeComments: true,
           collapseWhitespace: true,
