@@ -13,8 +13,6 @@ const entry = require('./parts/entry');
 const core = require('./parts/core');
 const css = require('./parts/css');
 
-const CriticalCssPlugin = require('critical-css-webpack-plugin')
-
 const packageJson = require('../../../package.json');
 const getChunkName = require('../get-chunk-name');
 const getLayoutEntrypoints = require('./utilities/get-layout-entrypoints');
@@ -89,20 +87,7 @@ module.exports = merge([
       }),
 
       new HtmlWebpackIncludeLiquidStylesPlugin(),
-      new CriticalCssPlugin({
-        base: path.join(__dirname, "../dist"),
-        src: path.join(__dirname, "../dist/theme-homepage.liquid"),
-        target: path.join(__dirname, "../dist/theme-homepage.liquid"),
-        inline: true,
-        minify: true,
-        extract: true,
-        width: 375,
-        height: 565,
-        concurrency: 4,
-        penthouse: {
-          blockJSRequests: false
-        }
-      })
+      
       new SlateTagPlugin(packageJson.version),
     ],
 
