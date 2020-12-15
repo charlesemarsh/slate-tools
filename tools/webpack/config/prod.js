@@ -89,7 +89,20 @@ module.exports = merge([
       }),
 
       new HtmlWebpackIncludeLiquidStylesPlugin(),
-      new CriticalCssPlugin()
+      new CriticalCssPlugin({
+        base: path.join(__dirname, "../dist"),
+        src: path.join(__dirname, "../dist/theme-homepage.liquid"),
+        target: path.join(__dirname, "../dist/theme-homepage.liquid"),
+        inline: true,
+        minify: true,
+        extract: true,
+        width: 375,
+        height: 565,
+        concurrency: 4,
+        penthouse: {
+          blockJSRequests: false
+        }
+      })
       new SlateTagPlugin(packageJson.version),
     ],
 
