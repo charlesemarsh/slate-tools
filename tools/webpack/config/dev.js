@@ -1,6 +1,6 @@
 const path = require('path');
 const webpack = require('webpack');
-const merge = require('webpack-merge');
+const {merge} = require('webpack-merge');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 const SlateConfig = require('@shopify/slate-config');
@@ -10,6 +10,7 @@ const babel = require('./parts/babel');
 const entry = require('./parts/entry');
 const sass = require('./parts/sass');
 const css = require('./parts/css');
+const srcPath = path.join(__dirname, 'src');
 
 const getLayoutEntrypoints = require('./utilities/get-layout-entrypoints');
 const getTemplateEntrypoints = require('./utilities/get-template-entrypoints');
@@ -31,9 +32,7 @@ module.exports = merge([
   css,
   {
     mode: 'development',
-
-    devtool: '#eval-source-map',
-
+    devtool: 'eval-source-map',
     plugins: [
       new webpack.HotModuleReplacementPlugin(),
 
