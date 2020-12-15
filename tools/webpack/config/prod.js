@@ -47,10 +47,7 @@ module.exports = merge([
 
       new HtmlWebpackPlugin({
         excludeChunks: ['static'],
-        output: {
-          path: path.join(__dirname, "../dist"),
-          filename: `../snippets/script-tags.liquid`,
-        },
+        filename: `../snippets/script-tags.liquid`,
         template: path.resolve(__dirname, '../script-tags.html'),
         inject: false,
         minify: {
@@ -62,15 +59,13 @@ module.exports = merge([
           // https://github.com/kangax/html-minifier#options-quick-reference
         },
         // necessary to consistently work with multiple chunks via CommonsChunkPlugin
+        chunksSortMode: 'dependency',
         liquidTemplates: getTemplateEntrypoints(),
         liquidLayouts: getLayoutEntrypoints(),
       }),
 
       new HtmlWebpackPlugin({
-        output: {
-          path: path.join(__dirname, "../dist"),
-          filename: `../snippets/style-tags.liquid`,
-        },
+        filename: `../snippets/style-tags.liquid`,
         template: path.resolve(__dirname, '../style-tags.html'),
         inject: false,
         minify: {
@@ -82,12 +77,13 @@ module.exports = merge([
           // https://github.com/kangax/html-minifier#options-quick-reference
         },
         // necessary to consistently work with multiple chunks via CommonsChunkPlugin
+        chunksSortMode: 'dependency',
         liquidTemplates: getTemplateEntrypoints(),
         liquidLayouts: getLayoutEntrypoints(),
       }),
 
       new HtmlWebpackIncludeLiquidStylesPlugin(),
-      
+
       new SlateTagPlugin(packageJson.version),
     ],
 

@@ -10,7 +10,6 @@ const babel = require('./parts/babel');
 const entry = require('./parts/entry');
 const sass = require('./parts/sass');
 const css = require('./parts/css');
-const srcPath = path.join(__dirname, 'src');
 
 const getLayoutEntrypoints = require('./utilities/get-layout-entrypoints');
 const getTemplateEntrypoints = require('./utilities/get-template-entrypoints');
@@ -32,7 +31,9 @@ module.exports = merge([
   css,
   {
     mode: 'development',
+
     devtool: 'eval-source-map',
+
     plugins: [
       new webpack.HotModuleReplacementPlugin(),
 
@@ -63,6 +64,7 @@ module.exports = merge([
           // https://github.com/kangax/html-minifier#options-quick-reference
         },
         // necessary to consistently work with multiple chunks via CommonsChunkPlugin
+        chunksSortMode: 'dependency',
         isDevServer: true,
         liquidTemplates: getTemplateEntrypoints(),
         liquidLayouts: getLayoutEntrypoints(),

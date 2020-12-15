@@ -5,9 +5,10 @@ class HtmlWebpackIncludeLiquidStylesPlugin {
   }
 
   apply(compiler) {
-    compiler.hooks.emit.tap("htmlWebpackPluginBeforeHtmlProcessing", compilation => {
-      this.onAlterChunks.bind(this)
-    })
+    compiler.hooks.compilation.tap(
+      'htmlWebpackIncludeChunksPlugin',
+      this.onCompilation.bind(this),
+    );
   }
 
   onCompilation(compilation) {
