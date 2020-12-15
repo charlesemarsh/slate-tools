@@ -54,6 +54,21 @@ module.exports = merge([
 
       new HtmlWebpackPlugin({
         excludeChunks: ['static'],
+        filename: `../snippets/critial-style-tags.liquid`,
+        template: path.resolve(__dirname, '../critial-style-tags.html'),
+        inject: false,
+        minify: {
+          removeComments: true,
+          removeAttributeQuotes: false,
+          collapseWhitespace: true,
+        },
+        isDevServer: true,
+        liquidTemplates: getTemplateEntrypoints(),
+        liquidLayouts: getLayoutEntrypoints(),
+      }),
+
+      new HtmlWebpackPlugin({
+        excludeChunks: ['static'],
         filename: `../snippets/style-tags.liquid`,
         template: path.resolve(__dirname, '../style-tags.html'),
         inject: false,

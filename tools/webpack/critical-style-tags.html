@@ -1,6 +1,6 @@
 <% for (var css in htmlWebpackPlugin.files.css) { %>
   <% var basename = htmlWebpackPlugin.files.css[css].split('/').reverse()[0]; %>
-  <% if !basename.includes('critical') %>
+  <% if basename.includes('critical') %>
     <% var chunkName = basename.replace('.scss', '').replace('.css', '').replace('.styleLiquid', ''); %>
     <% var isLiquidStyle = /.liquidStyle.css$/.test(basename) %>
     <% if (htmlWebpackPlugin.options.isDevServer === true && !basename.includes('.styleLiquid')) { %>
