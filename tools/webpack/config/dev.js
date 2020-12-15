@@ -54,8 +54,8 @@ module.exports = merge([
 
       new HtmlWebpackPlugin({
         excludeChunks: ['static'],
-        filename: `../snippets/critial-style-tags.liquid`,
-        template: path.resolve(__dirname, '../critial-style-tags.html'),
+        filename: `../snippets/critical-styles.liquid`,
+        template: path.resolve(__dirname, '../critical-styles.html'),
         inject: false,
         minify: {
           removeComments: true,
