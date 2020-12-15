@@ -3,6 +3,7 @@ const webpack = require('webpack');
 const {merge} = require('webpack-merge');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 const SlateConfig = require('@shopify/slate-config');
 const SlateTagPlugin = require('@shopify/slate-tag-webpack-plugin');
 
@@ -38,6 +39,10 @@ module.exports = merge([
         'process.env': {NODE_ENV: '"production"'},
       }),
 
+      new UglifyJSPlugin({
+        sourceMap: true,
+      }),
+
       // generate dist/layout/*.liquid for all layout files with correct paths to assets
 
       new HtmlWebpackPlugin({
@@ -47,7 +52,7 @@ module.exports = merge([
           filename: `../snippets/script-tags.liquid`,
         },
         template: path.resolve(__dirname, '../script-tags.html'),
-        inject: true,
+        inject: false,
         minify: {
           removeComments: true,
           collapseWhitespace: true,
@@ -57,6 +62,7 @@ module.exports = merge([
           // https://github.com/kangax/html-minifier#options-quick-reference
         },
         // necessary to consistently work with multiple chunks via CommonsChunkPlugin
+        isDevServer: true,
         liquidTemplates: getTemplateEntrypoints(),
         liquidLayouts: getLayoutEntrypoints(),
       }),
@@ -67,7 +73,7 @@ module.exports = merge([
           filename: `../snippets/style-tags.liquid`,
         },
         template: path.resolve(__dirname, '../style-tags.html'),
-        inject: true,
+        inject: false,
         minify: {
           removeComments: true,
           collapseWhitespace: true,
@@ -77,6 +83,7 @@ module.exports = merge([
           // https://github.com/kangax/html-minifier#options-quick-reference
         },
         // necessary to consistently work with multiple chunks via CommonsChunkPlugin
+        isDevServer: true,
         liquidTemplates: getTemplateEntrypoints(),
         liquidLayouts: getLayoutEntrypoints(),
       }),
