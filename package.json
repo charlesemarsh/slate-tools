@@ -56,7 +56,6 @@
     "html-critical-webpack-plugin": "^2.1.0",
     "html-loader": "^0.5.5",
     "html-webpack-include-assets-plugin": "^1.0.4",
-    "html-webpack-plugin": "^5.0.0-alpha.10",
     "img-loader": "2.0.1",
     "inquirer": "^5.0.1",
     "ip": "^1.1.5",
@@ -88,6 +87,7 @@
     "yargs": "^11.0.0"
   },
   "devDependencies": {
+    "html-webpack-plugin": "^5.0.0-alpha.15",
     "mock-fs": "^4.6.0",
     "webpack-cli": "^4.2.0"
   },
