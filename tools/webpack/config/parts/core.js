@@ -72,10 +72,6 @@ module.exports = {
       root: config.get('paths.theme'),
     }),
 
-    new MiniCssExtractPlugin({
-      filename: '[name].styleLiquid.scss.liquid',
-    }),
-
     new CopyWebpackPlugin([
       {
         from: config.get('paths.theme.src.assets'),
